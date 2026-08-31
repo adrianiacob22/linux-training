@@ -209,6 +209,10 @@ tldr tar              # exemple practice, concise (necesită instalare: apt inst
 
 ---
 
+## 🧪 Laborator practic
+
+[👉 Laborator Modul 1](laborator.md) — un scenariu ghidat, pas cu pas, cu soluții ascunse pentru autoverificare.
+
 ## Exerciții practice
 
 1. **Pipeline complex** — găsește toate fișierele `.log` mai vechi de 30 zile din `/var/log`, filtrează-le pe cele care conțin cuvântul `error`, apoi arhivează-le cu `tar`:

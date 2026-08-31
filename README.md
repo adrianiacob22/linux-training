@@ -7,20 +7,20 @@
 
 ## 📚 Structura Cursului
 
-| Modul | Titlu | Nivel | Ore est. | Status |
-|-------|-------|-------|----------|--------|
-| 1 | [Recapitulare & Fundamente Solide](modules/01-recapitulare-fundamente/README.md) | Mediu | 3h | ✅ |
-| 2 | [Sistemul de Fișiere & Permisiuni Avansate](modules/02-sistem-fisiere-permisiuni/README.md) | Mediu | 4h | 🚧 |
-| 3 | [Gestionarea Proceselor & Resurselor](modules/03-procese-resurse/README.md) | Mediu | 4h | 🚧 |
-| 4 | [Rețelistică pe Linux](modules/04-retelistica/README.md) | Mediu–Avansat | 5h | 🚧 |
-| 5 | [Gestionarea Utilizatorilor & Grupurilor](modules/05-utilizatori-grupuri/README.md) | Mediu | 3h | 🚧 |
-| 6 | [Managementul Pachetelor & Compilare din Sursă](modules/06-pachete-compilare/README.md) | Mediu | 3h | 🚧 |
-| 7 | [**Bash Scripting**](modules/07-bash-scripting/README.md) | Mediu–Avansat | 10h | ✅ |
-| 8 | [Servicii & Systemd](modules/08-servicii-systemd/README.md) | Avansat | 4h | 🚧 |
-| 9 | [Securitate pe Linux](modules/09-securitate/README.md) | Avansat | 5h | 🚧 |
-| 10 | [Administrare Avansată & DevOps Intro](modules/10-administrare-devops/README.md) | Avansat | 5h | 🚧 |
+| Modul | Titlu | Nivel | Ore est. | Laborator |
+|-------|-------|-------|----------|-----------|
+| 1 | [Recapitulare & Fundamente Solide](modules/01-recapitulare-fundamente/README.md) | Mediu | 3h | [🧪](modules/01-recapitulare-fundamente/laborator.md) |
+| 2 | [Sistemul de Fișiere & Permisiuni Avansate](modules/02-sistem-fisiere-permisiuni/README.md) | Mediu | 4h | [🧪](modules/02-sistem-fisiere-permisiuni/laborator.md) |
+| 3 | [Gestionarea Proceselor & Resurselor](modules/03-procese-resurse/README.md) | Mediu | 4h | [🧪](modules/03-procese-resurse/laborator.md) |
+| 4 | [Rețelistică pe Linux](modules/04-retelistica/README.md) | Mediu–Avansat | 5h | [🧪](modules/04-retelistica/laborator.md) |
+| 5 | [Gestionarea Utilizatorilor & Grupurilor](modules/05-utilizatori-grupuri/README.md) | Mediu | 3h | [🧪](modules/05-utilizatori-grupuri/laborator.md) |
+| 6 | [Managementul Pachetelor & Compilare din Sursă](modules/06-pachete-compilare/README.md) | Mediu | 3h | [🧪](modules/06-pachete-compilare/laborator.md) |
+| 7 | [**Bash Scripting**](modules/07-bash-scripting/README.md) | Mediu–Avansat | 10h | [🧪](modules/07-bash-scripting/laborator.md) |
+| 8 | [Servicii & Systemd](modules/08-servicii-systemd/README.md) | Avansat | 4h | [🧪](modules/08-servicii-systemd/laborator.md) |
+| 9 | [Securitate pe Linux](modules/09-securitate/README.md) | Avansat | 5h | [🧪](modules/09-securitate/laborator.md) |
+| 10 | [Administrare Avansată & DevOps Intro](modules/10-administrare-devops/README.md) | Avansat | 5h | [🧪](modules/10-administrare-devops/laborator.md) |
 
-✅ = conținut detaliat disponibil · 🚧 = doar plan (obiective + conținut + exerciții), urmează dezvoltarea
+Toate cele 10 module au conținut detaliat complet + laborator practic ghidat (scenarii pas cu pas, cu soluții ascunse pentru autoverificare).
 
 ---
 
@@ -96,4 +96,4 @@ Construiește un pipeline complet:
 
 ---
 
-*Curs creat: Mai 2026 | Versiune: 1.0*
+*Curs creat: Mai 2026 | Versiune: 2.0 — toate modulele complete*

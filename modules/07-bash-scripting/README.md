@@ -451,6 +451,10 @@ provision_users.sh
 └── Audit log al modificărilor
 ```
 
+### 🧪 Laborator practic
+
+[👉 Laborator Modul 7](laborator.md) — construiește incremental un script real de monitorizare (`syscheck.sh`), de la schelet până la o versiune completă cu logging, `trap`, `getopts`.
+
 ### Exerciții practice Modul 7
 1. Scrie un script care monitorizează un director și notifică la apariția de fișiere noi
 2. Automatizează rotația certificatelor SSL cu Let's Encrypt
