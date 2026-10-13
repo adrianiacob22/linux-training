@@ -12,15 +12,40 @@
 
 ## 4.1 — Modelul OSI & TCP/IP recap
 
-| Layer OSI | Exemplu | Unelte Linux relevante |
-|-----------|---------|--------------------------|
-| 7 — Application | HTTP, DNS, SSH | `curl`, `dig`, `ssh` |
-| 4 — Transport | TCP, UDP | `ss`, porturi |
-| 3 — Network | IP, routare | `ip`, `ping`, `traceroute` |
-| 2 — Data Link | Ethernet, MAC | `ip link`, `arp` |
-| 1 — Physical | cabluri, semnal | (hardware) |
+**OSI** e un model **teoretic**, în 7 straturi, creat ca referință universală de predare/proiectare a protocoalelor de rețea. **TCP/IP** e modelul **practic**, cu 4 straturi, pe care rulează de fapt internetul — e cel pe care îl vei folosi zilnic în diagnosticare. Le pui unul lângă altul pentru că majoritatea documentației și discuțiilor tehnice amestecă terminologia amândurora ("layer 7", "layer 3", "layer 2" vin din OSI; "stack TCP/IP" vine din modelul practic).
 
-Modelul **TCP/IP** (practic, cel folosit real) comprimă asta în 4 straturi: Link → Internet (IP) → Transport (TCP/UDP) → Application. Când diagnostichezi o problemă de rețea, mergi de jos în sus: interfața are IP? poți ajunge la gateway? poți rezolva DNS? portul răspunde?
+| # | Layer OSI | Rol | Layer TCP/IP | Exemplu protocoale | Unelte Linux |
+|---|-----------|-----|---------------|----------------------|----------------|
+| 7 | Application | formatul datelor cerut de aplicație | **Application** | HTTP, DNS, SSH, FTP | `curl`, `dig`, `ssh` |
+| 6 | Presentation | encodare, compresie, criptare (TLS) | **Application** | TLS/SSL, JPEG, encoding | `openssl` |
+| 5 | Session | deschide/gestionează/închide o sesiune logică | **Application** | sesiuni TLS, API tokens | — |
+| 4 | Transport | livrare end-to-end, porturi, control flux | **Transport** | TCP, UDP | `ss`, porturi |
+| 3 | Network | adresare logică, rutare între rețele | **Internet** | IP, ICMP | `ip`, `ping`, `traceroute` |
+| 2 | Data Link | adresare fizică locală, acces mediu | **Link** | Ethernet, ARP, Wi-Fi | `ip link`, `arp` |
+| 1 | Physical | semnal electric/optic/radio pe cablu/aer | **Link** | cabluri, fibră, radio | (hardware) |
+
+> OSI separă explicit straturile 5-7 (Session/Presentation/Application) pentru rigoare teoretică; TCP/IP le tratează ca pe UN singur strat "Application", pentru că în practică protocoale precum HTTP sau TLS fac treaba tuturor trei dintr-odată, fără o separare reală în implementare.
+
+**Encapsulare** — fiecare strat "împachetează" datele stratului de deasupra, adăugând propriul header. La fiecare nivel, unitatea de date are un nume diferit (PDU — Protocol Data Unit):
+
+```
+Application:  [ date HTTP                                    ]
+Transport:    [ TCP header | date HTTP                        ]   ← "segment"
+Internet:     [ IP header  | TCP header | date HTTP           ]   ← "pachet" (packet)
+Link:         [ Eth header | IP header | TCP header | date... ]   ← "cadru" (frame)
+Physical:                biți transmiși pe fir/aer                ← "biți"
+```
+
+La recepție, procesul e invers: fiecare strat "dezvăluie" header-ul propriu, îl interpretează, și pasează restul sus — pachetul traversează stiva de jos în sus pe mașina destinație.
+
+**De ce contează practic, nu doar pentru examen:** când cineva zice "problema e la layer 3" înseamnă rutare/IP, "layer 2" înseamnă switch/MAC/VLAN, "layer 7" înseamnă aplicația însăși, nu rețeaua. Diagnosticarea eficientă (vezi și §4.3) înseamnă să mergi **de jos în sus** prin stiva TCP/IP:
+
+1. **Link** — interfața e UP? are legătură fizică? (`ip link show`)
+2. **Internet** — am IP? pot ajunge la gateway? la un IP extern direct? (`ip addr`, `ping`)
+3. **Transport** — portul e deschis și ascultă? (`ss -tulpn`)
+4. **Application** — serviciul răspunde corect la nivel de protocol? (`curl -v`, `dig`)
+
+Majoritatea problemelor "nu merge rețeaua" se rezolvă rapid fix pentru că sari direct la pasul 4 fără să confirmi pașii 1-3 întâi.
 
 ---
 
